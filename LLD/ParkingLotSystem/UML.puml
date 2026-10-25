@@ -1,0 +1,27 @@
+@startuml
+class ParkingLot
+class ParkingFloor
+class ParkingSlot
+class Ticket
+class ParkingLotServices
+abstract class Vehicle
+class Bike
+class Car
+class Truck
+interface FeeStrategy
+class DefaultFeeStrategy
+interface SlotAllocationStrategy
+class FirstAvailableSlotStrategy
+
+ParkingLot "1" *-- "*" ParkingFloor
+ParkingFloor "1" *-- "*" ParkingSlot
+ParkingSlot --> Vehicle
+Ticket --> Vehicle
+ParkingLotServices --> ParkingLot
+ParkingLotServices --> Ticket
+FeeStrategy <|.. DefaultFeeStrategy
+SlotAllocationStrategy <|.. FirstAvailableSlotStrategy
+Vehicle <|-- Bike
+Vehicle <|-- Car
+Vehicle <|-- Truck
+@enduml
